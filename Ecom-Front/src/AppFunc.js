@@ -23,7 +23,7 @@ export default function AppFunc(props) {
     }
   }, [jwt])
 
-  function hyandleJWTChange(jwt) {
+  function handleJWTChange(jwt) {
     setJWT(jwt)
   }
 

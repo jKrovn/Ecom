@@ -26,7 +26,7 @@ function LoginFunc(props) {
       method: 'POST',
       body: JSON.stringify(payload),
     }
-    fetch('http://localhost:4000/v1/signin', requestOptions)
+    fetch(`${process.env.REACT_APP_API_URL}/v1/signin`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {

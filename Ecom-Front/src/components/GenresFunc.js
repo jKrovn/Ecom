@@ -6,7 +6,7 @@ function GenresFunc(props) {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch('http://localhost:4000/v1/genres')
+    fetch(`${process.env.REACT_APP_API_URL}/v1/genres`)
       .then((response) => {
         if (response.status !== 200) {
           setError('Invalid response ', response.status)

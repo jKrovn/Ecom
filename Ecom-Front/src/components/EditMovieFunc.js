@@ -29,7 +29,7 @@ function EditMovieFunc(props) {
     }
     const id = props.match.params.id
     if (id > 0) {
-      fetch('http://localhost:4000/v1/movie/' + id)
+      fetch(`${process.env.REACT_APP_API_URL}/v1/movie/` + id)
         .then((response) => {
           if (response.status !== 200) {
             setError('Invalid response: ', response.status)
@@ -79,7 +79,7 @@ function EditMovieFunc(props) {
       headers: myHeaders,
     }
 
-    fetch('http://localhost:4000/v1/admin/editmovie', requestOptions)
+    fetch(`${process.env.REACT_APP_API_URL}/v1/admin/editmovie`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -104,10 +104,13 @@ function EditMovieFunc(props) {
             const myHeaders = new Headers()
             myHeaders.append('Content-Type', 'application/json')
             myHeaders.append('Authorization', 'Bearer ' + props.jwt)
-            fetch('http://localhost:4000/admin/deletemovie/' + movie.id, {
-              method: 'GET',
-              headers: myHeaders,
-            })
+            fetch(
+              `${process.env.REACT_APP_API_URL}/admin/deletemovie/` + movie.id,
+              {
+                method: 'GET',
+                headers: myHeaders,
+              }
+            )
               .then((response) => response.json())
               .then((data) => {
                 if (data.error) {
